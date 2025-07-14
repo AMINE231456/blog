@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>My Blog</title>
+    <style>
+        :root {
+            --primary: transparent;
+            --dark: transparent;
+            --light: rgba(255, 255, 255, 0.9);
+            --gray: rgba(255, 255, 255, 0.7);
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--light);
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.6);
+        }
+        
+        header {
+            background: transparent;
+            backdrop-filter: blur(0px);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 1px solid transparent;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.747);
+            text-decoration-color:rgba(255, 255, 255, 0.747) ;
+            text-decoration: rgba(255, 255, 255, 0.747);
+            text-shadow: 0 0 2px rgba(255, 255, 255, 0.747), 0 0 5px rgba(255, 255, 255, 0.747);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            background: rgba(24, 24, 27, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            gap: 2rem;
+            margin: 0;
+        }
+        
+        nav a {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        main {
+            padding: 3rem 0;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .blog-card {
+            background: rgba(24, 24, 27, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        .blog-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            object-fit: cover !important;
+            border-radius: 12px !important;
+            border: 2px solid #fdfdfd !important;
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-date {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-title {
+            margin: 0 0 1rem;
+            font-size: 1.3rem;
+            color: white;
+        }
+        
+        .blog-excerpt {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .read-more:hover {
+            color: white;
+        }
+        
+        footer {
+            background: rgba(24, 24, 27, 0.8);
+            backdrop-filter: blur(10px);
+            color: var(--gray);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .social-links a {
+            color: var(--gray);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .home-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    background: transparent;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255,255,255,0.2);
+}
+
+.home-button:hover {
+    background: transparent;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.home-button i {
+    font-size: 24px;
+}
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="yandere-blue-archive-moewalls-com.mp4" type="video/mp4">
+    </video>
+    
+    <header>
+        <div class="container">
+            <h1>DevBlog</h1>
+            <p>Technical writings and project insights</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="blog-grid">
+            <!-- Blog Post 1 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('500c5b873c94b5d93458fb8013f3049e.jpg')"></div>
+                <div class="blog-content">
+                    <p class="blog-date">June 15, 2024</p>
+                    <h3 class="blog-title">Building Portfolio with Modern CSS</h3>
+                    <p class="blog-excerpt">Created a responsive portfolio using CSS Grid and Flexbox, featuring dark mode toggle and smooth animations. Explored advanced techniques for layout and transitions.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+            
+            <!-- Blog Post 2 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('58d4e73b1136fa100e34e1af987bb5a3.jpg')"></div>
+                <div class="blog-content">
+                    <p class="blog-date">May 28, 2024</p>
+                    <h3 class="blog-title">JavaScript Algorithms Daily Use</h3>
+                    <p class="blog-excerpt">Practical implementations of sorting algorithms, search methods, and recursion patterns. How these solutions optimize performance in real-world applications.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+            
+            <!-- Blog Post 3 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('a4ac5586177d6d5c4742d8bd6aa2fd89.jpg')"></div>
+                <div class="blog-content">
+                    <p class="blog-date">May 10, 2024</p>
+                    <h3 class="blog-title">Python Automation Toolkit</h3>
+                    <p class="blog-excerpt">Essential scripts for automating file management, web scraping, and data processing. Time-saving techniques for developers and system administrators.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+            
+            <!-- Blog Post 4 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('c3719fae00c3c57d74da321bd1ee50e5.jpg')"></div>
+                <div class="blog-content">
+                    <p class="blog-date">April 22, 2024</p>
+                    <h3 class="blog-title">Web Development Best Practices</h3>
+                    <p class="blog-excerpt">Modern approaches to responsive design, accessibility standards, and performance optimization for building future-proof web applications.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+            
+            <!-- Blog Post 5 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('cce1c25ccdd6bf1cfac22638b5ac4024.jpg')"></div>
+                <div class="blog-content">
+                    <p class="blog-date">April 5, 2024</p>
+                    <h3 class="blog-title">UI/UX Design Principles</h3>
+                    <p class="blog-excerpt">Creating intuitive user interfaces with Figma and Adobe XD. Case studies from my recent projects and lessons learned.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+            
+            <!-- Blog Post 6 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('df402bd6b6ac7f6f8994a3295dcee6ed.jpg')"></div>
+                <div class="blog-content">
+                    <p class="blog-date">March 18, 2024</p>
+                    <h3 class="blog-title">Cloud Computing Basics</h3>
+                    <p class="blog-excerpt">Getting started with AWS services and deployment strategies. My journey from local development to cloud infrastructure.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2024 DevBlog. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+                <a href="mailto:youremail@example.com">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="index.html" class="home-button" title="Return to Home">
+    <i class="fas fa-home"></i>
+</a>
+
+</body>
+</html>
